@@ -5,6 +5,7 @@ import GoogleMap from '../components/GoogleMap';
 
 const Home = () => {
   const [searchTerm, setSearchTerm] = React.useState(null);
+  const [searchExecuted, setSearchExecuted] = React.useState(false);
   const [results, setResults] = React.useState([]);
   const { publicRuntimeConfig } = getConfig();
 
@@ -15,6 +16,7 @@ const Home = () => {
     );
     const data = await resp.json();
 
+    setSearchExecuted(true);
     setResults(data.results);
   };
 
@@ -66,6 +68,7 @@ const Home = () => {
             </div>
           </div>
         )}
+        {results.length === 0 && searchExecuted && <div className="text-3xl">No results found for {searchTerm}</div>}
       </main>
     </div>
   );
