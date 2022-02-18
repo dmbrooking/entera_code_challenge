@@ -42,8 +42,8 @@ const Home = () => {
         </form>
 
         {results.length > 0 && (
-          <div className="w-full flex">
-            <div className="w-1/4">
+          <div className="w-full flex flex-col md:flex-row">
+            <div className="w-full md:w-1/4 order-2 md:order-1">
               {results.map((result, idx) => (
                 <div key={result['id']} className="flex flex-row p-3 border-b-2 border-blue-500">
                   <div className="mx-2 mt-2 rounded-[50%] bg-black text-white text-lg min-w-[25px] h-[25px] flex justify-center">
@@ -61,7 +61,9 @@ const Home = () => {
                 </div>
               ))}
             </div>
-            <GoogleMap results={results} />
+            <div className="order-1 md:order-2 w-full h-[400px] md:h-[100vh]">
+              <GoogleMap results={results} />
+            </div>
           </div>
         )}
       </main>

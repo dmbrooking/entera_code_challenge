@@ -33,17 +33,15 @@ const GoogleMap = ({ results }) => {
   }, [results]);
 
   return (
-    <div style={{ height: '100vh', width: '100%' }}>
-      <GoogleMapReact
-        bootstrapURLKeys={{ key: publicRuntimeConfig.GOOGLE_MAPS_API_KEY }}
-        center={mapState.location}
-        defaultZoom={8}
-      >
-        {results.map((result, idx) => (
-          <Marker key={idx + 1} lat={result['location.lat']} lng={result['location.lon']} text={idx + 1} />
-        ))}
-      </GoogleMapReact>
-    </div>
+    <GoogleMapReact
+      bootstrapURLKeys={{ key: publicRuntimeConfig.GOOGLE_MAPS_API_KEY }}
+      center={mapState.location}
+      defaultZoom={8}
+    >
+      {results.map((result, idx) => (
+        <Marker key={idx + 1} lat={result['location.lat']} lng={result['location.lon']} text={idx + 1} />
+      ))}
+    </GoogleMapReact>
   );
 };
 
